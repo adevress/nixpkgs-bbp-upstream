@@ -9,7 +9,7 @@ rec {
     kernelTarget = "bzImage";
   };
 
-  pc64 = pcBase // { kernelArch = "x86_64"; };
+  pc64 = pcBase // { kernelArch = "x86_64"; };  
 
   pc32 = pcBase // { kernelArch = "i386"; };
 
@@ -20,6 +20,8 @@ rec {
   pc64_simplekernel = pc64 // {
     kernelAutoModules = false;
   };
+
+  powerpc64_pc = pcBase // { kernelArch = "ppc64"; };
 
   sheevaplug = {
     name = "sheevaplug";

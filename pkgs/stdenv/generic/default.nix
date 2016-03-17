@@ -228,6 +228,7 @@ let
       isLinux = system == "i686-linux"
              || system == "x86_64-linux"
              || system == "powerpc-linux"
+             || system == "powerpc64-linux"
              || system == "armv5tel-linux"
              || system == "armv6l-linux"
              || system == "armv7l-linux"
@@ -262,13 +263,15 @@ let
              || system == "x86_64-openbsd"
              || system == "x86_64-cygwin"
              || system == "x86_64-solaris"
-             || system == "mips64el-linux";
+             || system == "mips64el-linux"
+	     || system == "powerpc64-linux";
       isMips = system == "mips-linux"
             || system == "mips64el-linux";
       isArm = system == "armv5tel-linux"
            || system == "armv6l-linux"
            || system == "armv7l-linux";
-      isBigEndian = system == "powerpc-linux";
+      isBigEndian = system == "powerpc-linux"
+	   || system == "powerpc64-linux";
 
       # Whether we should run paxctl to pax-mark binaries.
       needsPax = isLinux;

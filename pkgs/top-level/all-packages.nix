@@ -77,6 +77,7 @@ let
       else if system == "mips64el-linux" then platforms.fuloong2f_n32
       else if system == "x86_64-linux" then platforms.pc64
       else if system == "i686-linux" then platforms.pc32
+      else if system == "powerpc64-linux" then platforms.powerpc64_pc
       else platforms.pcBase;
 
   platform = if platform_ != null then platform_

@@ -31,6 +31,7 @@ stdenv.mkDerivation rec {
   configureScript =
     if stdenv.system == "x86_64-darwin" then "./Configure darwin64-x86_64-cc"
     else if stdenv.system == "x86_64-solaris" then "./Configure solaris64-x86_64-gcc"
+    else if stdenv.system == "powerpc64-linux" then "./Configure linux-ppc64"
     else "./config";
 
   configureFlags = [
