@@ -1,12 +1,12 @@
 {
   busybox = import <nix/fetchurl.nix> {
-    url = http://bbpcf011.epfl.ch/others/busybox;
-    sha256 = "0jbsj856li6hhfpqfmxns6m0n4dnx817bx04sifjx6vvj5fi1zr3";
+    url = http://bbpcf011.epfl.ch/others/release-2/busybox;
+    sha256 = "00b9s8d9nxv87zgcm4pkdizlvqxck6mwahcndi7xyjv0lg5bbsq5";
     executable = true;
   };
 
   bootstrapTools = import <nix/fetchurl.nix> {
-    url = http://bbpcf011.epfl.ch/others/bootstrap-tools2.tar.xz;   
-    sha256 = "1zvz6zywkcid9qfdimr3iv45x416ib6hk67prkpryr87rsw1ygdm";
+    url = http://bbpcf011.epfl.ch/others/release-2/bootstrap-tools.tar.xz;   
+    sha256 = "0b0lkhvdflb209cwwzxm0bcbz0inq1awk22d83jdrz56h9xmrc9v";
   };
 }

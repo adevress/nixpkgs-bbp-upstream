@@ -47,6 +47,8 @@ rec {
 
     args = if system == "armv5tel-linux" then
         [ "ash" "-e" ./scripts/unpack-bootstrap-tools-arm.sh ]
+      else if system == "powerpc64-linux" then
+	[ "ash" "-e" ./scripts/unpack-bootstrap-tools-powerpc64.sh ]
       else
         [ "ash" "-e" ./scripts/unpack-bootstrap-tools.sh ];
 
