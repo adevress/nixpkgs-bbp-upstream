@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
     sha256 = "07avbdc26yl2a46s76fc7m4vg611g8sh39l26x9dr9byya6sb509";
   };
 
-  buildInputs = [ python wrapPython distutils-cfg ];
+  nativeBuildInputs = [ python wrapPython distutils-cfg ];
 
   buildPhase = "${python}/bin/${python.executable} setup.py build";
 
