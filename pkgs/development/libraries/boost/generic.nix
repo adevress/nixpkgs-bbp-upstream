@@ -176,7 +176,9 @@ stdenv.mkDerivation {
       EOF
     '';
     buildPhase = builder crossB2Args;
-    installPhase = installer crossB2Args;
-    postFixup = fixup;
+    installPhase = (installer crossB2Args);
+	postFixup = fixup + ''
+	    echo -n "$dev $lib" >> $out/nix-support/propagated-build-inputs
+	 '';
   };
 }
