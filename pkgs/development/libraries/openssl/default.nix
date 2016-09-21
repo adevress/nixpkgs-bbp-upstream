@@ -14,6 +14,7 @@ stdenv.mkDerivation rec {
     urls = [
       "http://www.openssl.org/source/${name}.tar.gz"
       "http://openssl.linux-mirror.org/source/${name}.tar.gz"
+      "http://ftp.nluug.nl/security/openssl/${name}.tar.gz"
     ];
     sha256 = "e7e81d82f3cd538ab0cdba494006d44aab9dd96b7f6233ce9971fb7c7916d511";
   };
