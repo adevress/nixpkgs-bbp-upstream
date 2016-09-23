@@ -13,6 +13,7 @@ stdenv.mkDerivation rec {
   preConfigure = ''
     # Remove the install-data stuff, since it tries to write to /var
     sed -i '505,511d' src/etc/Makefile.in
+    mkdir -p $out/lib/systemd/system
   '';
 
   configureFlags = [
