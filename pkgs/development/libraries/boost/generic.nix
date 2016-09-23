@@ -77,7 +77,7 @@ let
     "toolset=gcc-cross"
     "--without-python"
   ];
-  crossB2Args = concatMapStringsSep " " (genericB2Flags ++ crossB2Flags);
+  crossB2Args = concatStringsSep " " (genericB2Flags ++ crossB2Flags);
 
   builder = b2Args: ''
     ./b2 ${b2Args}
@@ -168,6 +168,7 @@ stdenv.mkDerivation {
     # We want to substitute the contents of configureFlags, removing thus the
     # usual --build and --host added on cross building.
     preConfigure = ''
+      NIX_CROSS_LDFLAGS="$(echo $NIX_CROSS_LDFLAGS | sed "s,$out,$lib,g")"
       export configureFlags="--without-icu ${concatStringsSep " " commonConfigureFlags}"
       set -x
       cat << EOF > user-config.jam
@@ -175,7 +176,9 @@ stdenv.mkDerivation {
       EOF
     '';
     buildPhase = builder crossB2Args;
-    installPhase = installer crossB2Args;
-    postFixup = fixup;
+    installPhase = (installer crossB2Args);
+	postFixup = fixup + ''
+	    echo -n "$dev $lib" >> $out/nix-support/propagated-build-inputs
+	 '';
   };
 }

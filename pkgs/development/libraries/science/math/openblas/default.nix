@@ -11,13 +11,16 @@ let local = config.openblas.preferLocalBuild or false;
       { i686-linux = "32";
         x86_64-linux = "64";
         x86_64-darwin = "64";
+		powerpc64-linux = "64";
       }."${stdenv.system}" or (throw "unsupported system: ${stdenv.system}");
     genericFlags =
       [ "DYNAMIC_ARCH=1"
         "NUM_THREADS=64"
       ];
-    localFlags = config.openblas.flags or
-      optionals (hasAttr "target" config.openblas) [ "TARGET=${config.openblas.target}" ];
+    localFlags = attrByPath [ "openblas" "flags" ]  ( 
+				 	optionals (hasAttr "target" config.openblas) 
+							[ "TARGET=${config.openblas.target}" ]
+					) config;
     blas64Orig = blas64;
 in
 stdenv.mkDerivation rec {
