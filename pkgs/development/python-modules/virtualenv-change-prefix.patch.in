@@ -2,7 +2,7 @@ Without this patch `virtualenv --python=python2.7 .` fails with an
 error because it notices that the python readline.so is not in the
 same path as python2.7. I assume this is to avoid copying the wrong
 file on systems where it is possible to find incompatible libraries by
-accident. Adding "/nix/store" to the prefix fixes this problem.
+accident. Adding "@nix_store_path@" to the prefix fixes this problem.
 
 A sitecustomize.py is created in the virtualenv which makes libraries
 from the python specified by the --python argument available to the
@@ -32,7 +32,7 @@ index d3e76a7..cb307fa 100755
 -            os.path.join("~", ".local", "lib","python", sys.version[:3], "site-packages"),
 -            # System Python 2.7 on OSX Mountain Lion
 -            os.path.join("~", "Library", "Python", sys.version[:3], "lib", "python", "site-packages")))
-+    prefixes = ["/nix/store", sys.prefix]
++    prefixes = ["@nix_store_path@", sys.prefix]
  
      if hasattr(sys, 'real_prefix'):
          prefixes.append(sys.real_prefix)
@@ -40,7 +40,7 @@ index d3e76a7..cb307fa 100755
              if src_prefix != os.sep: # sys.prefix == "/"
                  assert relpath[0] == os.sep
                  relpath = relpath[1:]
-+                if src_prefix == "/nix/store":
++                if src_prefix == "@nix_store_path@":
 +                    relpath = "/".join(relpath.split("/")[1:])
              return join(dst_prefix, relpath)
      assert False, "Filename %s does not start with any of these prefixes: %s" % \

@@ -14389,7 +14389,13 @@ let
 
     pythonPath = [ self.recursivePthLoader ];
 
-    patches = [ ../development/python-modules/virtualenv-change-prefix.patch ];
+    patch_venv= ../development/python-modules/virtualenv-change-prefix.patch.in;
+
+    patchPhase = ''
+        export nix_store_path=$(readlink -m $NIX_STORE)
+        substituteAll ${patch_venv} virtualenv-change-prefix.patch
+        patch -p1 < ./virtualenv-change-prefix.patch
+    '';
 
     propagatedBuildInputs = with self; [ modules.readline modules.sqlite3 modules.curses ];
 
