@@ -24,6 +24,15 @@ rec {
     http://jaist.dl.sourceforge.jp/
   ];
 
+  # Python PyPI mirrors
+  pypi = [
+    https://files.pythonhosted.org/packages/source/
+    # pypi.io is a more semantic link, but atm it’s referencing
+    # files.pythonhosted.org over two redirects
+    https://pypi.io/packages/source/
+  ];
+
+
   # GNU (http://www.gnu.org/prep/ftp.html).
   gnu = [
     # This one redirects to a (supposedly) nearby and (supposedly) up-to-date
