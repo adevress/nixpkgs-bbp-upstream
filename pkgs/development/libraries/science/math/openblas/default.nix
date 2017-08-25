@@ -15,7 +15,6 @@ let local = config.openblas.preferLocalBuild or false;
       }."${stdenv.system}" or (throw "unsupported system: ${stdenv.system}");
     genericFlags =
       [ "DYNAMIC_ARCH=1"
-        "NUM_THREADS=64"
       ];
     localFlags = attrByPath [ "openblas" "flags" ]  ( 
 				 	optionals (hasAttr "target" config.openblas) 
@@ -24,12 +23,12 @@ let local = config.openblas.preferLocalBuild or false;
     blas64Orig = blas64;
 in
 stdenv.mkDerivation rec {
-  version = "0.2.14";
+  version = "0.2.18";
 
   name = "openblas-${version}";
   src = fetchurl {
     url = "https://github.com/xianyi/OpenBLAS/tarball/v${version}";
-    sha256 = "0av3pd96j8rx5i65f652xv9wqfkaqn0w4ma1gvbyz73i6j2hi9db";
+    sha256 = "0vdzivw24s94vrzw4sqyz76mj60vs27vyn3dc14yw8qfq1v2wib5";
     name = "openblas-${version}.tar.gz";
   };
 
@@ -49,7 +48,8 @@ stdenv.mkDerivation rec {
       "CC=${if stdenv.isDarwin then "clang" else "gcc"}"
       ''PREFIX="''$(out)"''
       "BINARY=${binary}"
-      "USE_OPENMP=${if stdenv.isDarwin then "0" else "1"}"
+      "USE_OPENMP=0"
+      "USE_THREAD=0"
       "INTERFACE64=${if blas64 then "1" else "0"}"
     ];
 
