@@ -47,6 +47,8 @@ buildPythonPackage rec {
 
   disabled = isPy3k || isPyPy;
 
+  doCheck = false;
+
   meta = {
     description =
       "Python bindings for the Message Passing Interface standard";
