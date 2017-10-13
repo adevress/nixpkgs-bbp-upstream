@@ -5,7 +5,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = mirror://sourceforge/itk/InsightToolkit-4.0.0.tar.xz;
-    sha256 = "05z49sw612cbyiaghcsda0xylrkf06jh81ql79si5632w1hpgbd9";
+    sha256 = "1grhp5i29v1krrn1m36n68ls6vakvbw4x60im26b7h55rkvx61vs";
   };
 
   cmakeFlags = [
