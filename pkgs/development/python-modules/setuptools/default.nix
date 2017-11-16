@@ -4,11 +4,11 @@ stdenv.mkDerivation rec {
   shortName = "setuptools-${version}";
   name = "${python.executable}-${shortName}";
 
-  version = "18.2";
+  version = "36.7.2";
 
   src = fetchurl {
-    url = "http://pypi.python.org/packages/source/s/setuptools/${shortName}.tar.gz";
-    sha256 = "07avbdc26yl2a46s76fc7m4vg611g8sh39l26x9dr9byya6sb509";
+    url = "http://bbpobjectstorage.epfl.ch:81/swift/v1/nix-data/${shortName}.tar.gz";
+    sha256 = "1hl3bkpyx3qm6hv01zg24dqc0nc4qph6jan6ci4fa6kl70wsab9d";
   };
 
   nativeBuildInputs = [ python wrapPython distutils-cfg ];
