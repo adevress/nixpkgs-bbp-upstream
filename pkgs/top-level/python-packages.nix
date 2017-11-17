@@ -2228,6 +2228,8 @@ let
       sha256 = "0knlbq79g2ww6xzsyknj9rirrgrgc983dpa2d9nkdf31mb2a3bni";
     };
 
+    doCheck = false;
+
     meta = {
       description = "Code coverage measurement for python";
       homepage = http://nedbatchelder.com/code/coverage/;
@@ -10008,6 +10010,8 @@ let
       homepage = http://pylib.readthedocs.org/;
       license = licenses.mit;
     };
+
+    doCheck = false;
   };
 
 
@@ -11811,6 +11815,8 @@ let
       url = "http://pypi.python.org/packages/source/r/requests/${name}.tar.gz";
       sha256 = "0gdr9dxm24amxpbyqpbh3lbwxc2i42hnqv50sigx568qssv3v2ir";
     };
+
+    doCheck = false;
 
     meta = {
       description = "An Apache2 licensed HTTP library, written in Python, for human beings";
