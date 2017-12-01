@@ -15722,7 +15722,7 @@ let
       url = "http://pypi.python.org/packages/source/p/pyzmq/${name}.tar.gz";
       sha256 = "1gbpgz4ngfw5x6zlsa1k0jwy5vd5wg9iz1shdx4zav256ib08vjx";
     };
-    buildInputs = with self; [ pkgs.zeromq3 ];
+    buildInputs = with self; [ pkgs.zeromq4 ];
     doCheck = false;
   };
 
